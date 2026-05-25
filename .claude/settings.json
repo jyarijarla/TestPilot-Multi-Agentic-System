@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm ls *)",
+      "PowerShell(docker exec testpilot-redis-1 redis-cli ping 2>&1)",
+      "PowerShell($tools = \"$env:USERPROFILE\\\\tools\"; Expand-Archive -Path \"$tools\\\\gradle-8.5-bin.zip\" -DestinationPath $tools -Force; Write-Host \"Extracted to $tools\\\\gradle-8.5\")",
+      "PowerShell(& \"$env:USERPROFILE\\\\tools\\\\gradle-8.5\\\\bin\\\\gradle.bat\" --version 2>&1 | Select-Object -First 3)",
+      "PowerShell($tools = \"$env:USERPROFILE\\\\tools\"; Invoke-WebRequest -Uri \"https://services.gradle.org/distributions/gradle-8.14.1-bin.zip\" -OutFile \"$tools\\\\gradle-8.14.1-bin.zip\" -UseBasicParsing; Write-Host \"Done\")",
+      "PowerShell($tools = \"$env:USERPROFILE\\\\tools\"; Expand-Archive -Path \"$tools\\\\gradle-8.14.1-bin.zip\" -DestinationPath $tools -Force; Write-Host \"Extracted\")",
+      "PowerShell($tools = \"$env:USERPROFILE\\\\tools\"; $out = \"$tools\\\\gradle-8.14.1-bin.zip\"; Remove-Item $out -Force -ErrorAction SilentlyContinue; $wc = New-Object System.Net.WebClient; $wc.DownloadFile\\(\"https://services.gradle.org/distributions/gradle-8.14.1-bin.zip\", $out\\); \\(Get-Item $out\\).Length)",
+      "PowerShell($tools = \"$env:USERPROFILE\\\\tools\"; Expand-Archive -Path \"$tools\\\\gradle-8.14.1-bin.zip\" -DestinationPath $tools -Force; Write-Host \"Extracted OK\")",
+      "PowerShell($gradleBin = \"$env:USERPROFILE\\\\tools\\\\gradle-8.14.1\\\\bin\"; $currentPath = [Environment]::GetEnvironmentVariable\\(\"PATH\", \"User\"\\); $newPath = \\($currentPath -replace [regex]::Escape\\(\"$env:USERPROFILE\\\\tools\\\\gradle-8.5\\\\bin\"\\), \"\"\\) + \";$gradleBin\"; [Environment]::SetEnvironmentVariable\\(\"PATH\", $newPath.TrimStart\\(';'\\), \"User\"\\); & \"$gradleBin\\\\gradle.bat\" --version 2>&1 | Select-Object -First 5)",
+      "Read(//c/Program Files/Java/**)",
+      "PowerShell($jdk17 = \"C:\\\\Program Files\\\\Eclipse Adoptium\\\\jdk-17.0.18.8-hotspot\"; [Environment]::SetEnvironmentVariable\\(\"JAVA_HOME\", $jdk17, \"User\"\\); $env:JAVA_HOME = $jdk17; & \"$env:USERPROFILE\\\\tools\\\\gradle-8.14.1\\\\bin\\\\gradle.bat\" --version 2>&1 | Select-Object -First 6)",
+      "PowerShell($env:JAVA_HOME = \"C:\\\\Program Files\\\\Eclipse Adoptium\\\\jdk-17.0.18.8-hotspot\"; $gradleBin = \"$env:USERPROFILE\\\\tools\\\\gradle-8.14.1\\\\bin\\\\gradle.bat\"; $proc = Start-Process -FilePath $gradleBin -ArgumentList \"--version\" -Wait -PassThru -NoNewWindow; Write-Host \"Exit code: $\\($proc.ExitCode\\)\")"
+    ]
+  }
+}

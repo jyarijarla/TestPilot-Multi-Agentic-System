@@ -1,0 +1,11 @@
+node_modules
+apps/web/node_modules
+apps/worker/node_modules
+packages/shared/node_modules
+apps/web/dist
+apps/worker/dist
+apps/web/.env*
+apps/worker/.env*
+.env*
+docker
+*.md

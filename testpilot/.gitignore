@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+*.db
+*.db-journal
+coverage/
+.vitest-cache/
+playwright-report/
+test-results/
+prisma/migrations/

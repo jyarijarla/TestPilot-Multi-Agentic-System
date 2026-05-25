@@ -1,0 +1,30 @@
+services:
+  - type: web
+    name: testpilot-worker
+    runtime: docker
+    rootDir: .
+    dockerfilePath: apps/worker/Dockerfile
+    plan: starter
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: DIRECT_URL
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false
+      - key: JWT_SECRET
+        sync: false
+      - key: REDIS_URL
+        fromService:
+          name: testpilot-redis
+          type: redis
+          property: connectionString
+      - key: PORT
+        value: 3001
+      - key: NODE_ENV
+        value: production
+
+  - type: redis
+    name: testpilot-redis
+    plan: free
+    maxmemoryPolicy: noeviction

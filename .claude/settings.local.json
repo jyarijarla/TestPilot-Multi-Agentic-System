@@ -1,0 +1,20 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm test *)",
+      "Bash(npm install *)",
+      "Bash(node -e \"require\\('c:/Users/joey1/Code/Projects/AgenticTDD/testpilot/node_modules/supertest'\\)\")",
+      "Bash(npx vitest *)",
+      "Bash(npx --yes playwright --version)",
+      "Bash(npx playwright *)",
+      "Bash(ls \"C:\\\\Users\\\\joey1\\\\AppData\\\\Local\\\\ms-playwright\\\\\" 2>&1)",
+      "Read(//c/Users/joey1/AppData/Local/**)",
+      "Bash(npx prisma *)",
+      "Bash(npm show *)",
+      "Bash(powershell -Command \"Get-Process 'Docker Desktop' -ErrorAction SilentlyContinue | Select-Object Name,Id\")",
+      "Bash(powershell -Command \"Get-Service -Name 'redis*' -ErrorAction SilentlyContinue | Select-Object Name,Status\")",
+      "PowerShell(docker --version 2>&1)",
+      "PowerShell(docker compose version 2>&1)"
+    ]
+  }
+}

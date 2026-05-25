@@ -1,0 +1,56 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model Run {
+  id         String   @id @default(cuid())
+  userId     String   @default("")
+  goal       String
+  sourceCode String
+  status     String   @default("PENDING")
+  retryCount Int      @default(0)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  steps  Step[]
+  report Report?
+}
+
+model Step {
+  id         String  @id @default(cuid())
+  runId      String
+  agent      String
+  model      String
+  input      String
+  output     String
+  tokensUsed Int?
+  durationMs Int
+  createdAt  DateTime @default(now())
+
+  run Run @relation(fields: [runId], references: [id], onDelete: Cascade)
+}
+
+model Report {
+  id                  String   @id @default(cuid())
+  runId               String   @unique
+  testFile            String
+  passRate            Float
+  coverage            Float
+  redPhase            String
+  greenPhase          String
+  refactorSuggestions String
+  createdAt           DateTime @default(now())
+
+  run Run @relation(fields: [runId], references: [id], onDelete: Cascade)
+}

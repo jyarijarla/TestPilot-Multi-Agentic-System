@@ -1,0 +1,26 @@
+{
+  "name": "testpilot",
+  "version": "1.0.0",
+  "private": true,
+  "workspaces": [
+    "apps/web",
+    "apps/worker",
+    "packages/shared"
+  ],
+  "scripts": {
+    "dev:web": "npm -w apps/web run dev",
+    "dev:worker": "npm -w apps/worker run dev",
+    "build": "npm -w packages/shared run build && npm -w apps/worker run build && npm -w apps/web run build",
+    "test": "npm -w packages/shared run test && npm -w apps/worker run test",
+    "test:e2e": "npm -w apps/web run test:e2e",
+    "prisma:generate": "prisma generate --schema=prisma/schema.prisma",
+    "prisma:migrate": "prisma migrate dev --schema=prisma/schema.prisma"
+  },
+  "devDependencies": {
+    "prisma": "^7.8.0",
+    "typescript": "^5.6.3"
+  },
+  "dependencies": {
+    "@prisma/client": "^7.8.0"
+  }
+}
