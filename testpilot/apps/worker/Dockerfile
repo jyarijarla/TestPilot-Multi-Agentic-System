@@ -16,7 +16,7 @@ RUN apt-get update -y && \
 WORKDIR /app
 
 # Copy workspace manifests first so npm install is cached when only source changes
-COPY package.json package-lock.json* ./
+COPY package.json package-lock.json* tsconfig.base.json ./
 COPY apps/worker/package.json ./apps/worker/
 COPY packages/shared/package.json ./packages/shared/
 
