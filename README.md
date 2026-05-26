@@ -1,6 +1,6 @@
 # TestPilot
 
-You paste Java code and describe what you want tested. TestPilot figures out the test cases, writes them, runs them, and tells you how well your code holds up — all without you touching a test file.
+You paste Java code and describe what you want tested. TestPilot figures out the test cases, writes them, runs them, and tells you how well your code holds up, and all without you touching a test file.
 
 ---
 
